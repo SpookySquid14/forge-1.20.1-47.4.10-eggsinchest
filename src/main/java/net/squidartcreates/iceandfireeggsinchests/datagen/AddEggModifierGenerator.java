@@ -19,6 +19,7 @@ public class AddEggModifierGenerator extends GlobalLootModifierProvider {
     @Override
     protected void start() {
 
+        //Adds Lightning Dragon Egg to the Bonus chest at the start of world generation.
         add("stater_chest_testing", new AddEggModifier(new LootItemCondition[]{
                 new LootTableIdCondition.Builder(new ResourceLocation("chests/spawn_bonus_chest")).build()},
                 IafItemRegistry.DRAGONEGG_ELECTRIC.get()));
