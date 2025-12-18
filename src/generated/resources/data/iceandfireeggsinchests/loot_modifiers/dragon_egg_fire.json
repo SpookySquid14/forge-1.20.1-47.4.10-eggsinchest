@@ -1,0 +1,10 @@
+{
+  "type": "iceandfireeggsinchests:add_egg",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "iceandfire:chest/fire_dragon_female_cave"
+    }
+  ],
+  "d_egg": "iceandfire:dragonegg_red"
+}

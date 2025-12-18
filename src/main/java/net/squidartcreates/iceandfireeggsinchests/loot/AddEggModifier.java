@@ -1,12 +1,18 @@
 package net.squidartcreates.iceandfireeggsinchests.loot;
 
 import java.util.function.Supplier;
+
+import com.github.alexthe666.iceandfire.item.IafItemRegistry;
+import com.github.alexthe666.iceandfire.item.ItemDragonEgg;
+import com.github.alexthe666.iceandfire.loot.IafLootRegistry;
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
@@ -34,6 +40,8 @@ for (LootItemCondition condition : this.conditions){
         return generatedLoot;
     }
 }
+
+
 
         generatedLoot.add(new ItemStack(this.d_egg));
 
