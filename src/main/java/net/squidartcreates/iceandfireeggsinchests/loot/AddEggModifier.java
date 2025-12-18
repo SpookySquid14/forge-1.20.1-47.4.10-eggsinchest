@@ -1,5 +1,6 @@
 package net.squidartcreates.iceandfireeggsinchests.loot;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import com.github.alexthe666.iceandfire.item.IafItemRegistry;
@@ -25,6 +26,7 @@ public class AddEggModifier  extends LootModifier {
             -> RecordCodecBuilder.create(inst -> codecStart(inst).and(ForgeRegistries.ITEMS.getCodec()
             .fieldOf("d_egg").forGetter(m -> m.d_egg)).apply(inst, AddEggModifier::new)));
 
+    private List egg_variants[];
     private final Item d_egg;
 
     public AddEggModifier(LootItemCondition[] conditionsIn, Item d_egg) {
@@ -40,7 +42,6 @@ for (LootItemCondition condition : this.conditions){
         return generatedLoot;
     }
 }
-
 
 
         generatedLoot.add(new ItemStack(this.d_egg));
