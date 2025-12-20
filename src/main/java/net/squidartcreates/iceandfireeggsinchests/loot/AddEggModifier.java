@@ -1,6 +1,9 @@
 package net.squidartcreates.iceandfireeggsinchests.loot;
 
+import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 import java.util.function.Supplier;
 
 import com.github.alexthe666.iceandfire.item.IafItemRegistry;
@@ -11,6 +14,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.animal.Cod;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
@@ -19,19 +23,34 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 public class AddEggModifier  extends LootModifier {
     public static final Supplier<Codec<AddEggModifier>> CODEC = Suppliers.memoize(()
-            -> RecordCodecBuilder.create(inst -> codecStart(inst).and(ForgeRegistries.ITEMS.getCodec()
-            .fieldOf("d_egg").forGetter(m -> m.d_egg)).apply(inst, AddEggModifier::new)));
+            -> RecordCodecBuilder.create(inst -> codecStart(inst).and(Codec.STRING
+            .fieldOf("eggType").forGetter(m -> m.eggType)).apply(inst, AddEggModifier::new)));
 
-    private List egg_variants[];
-    private final Item d_egg;
+    public RegistryObject<Item>[] fireEggVariants = new RegistryObject[]{
+            IafItemRegistry.DRAGONEGG_RED,
+            IafItemRegistry.DRAGONEGG_GREEN,
+            IafItemRegistry.DRAGONEGG_GRAY,
+            IafItemRegistry.DRAGONEGG_BRONZE
+    };
+//            IafItemRegistry.DRAGONEGG_RED(),
+//            IafItemRegistry.DRAGONEGG_GREEN(),
+//            IafItemRegistry.DRAGONEGG_BRONZE(),
+//            IafItemRegistry.DRAGONEGG_GRAY()];
 
-    public AddEggModifier(LootItemCondition[] conditionsIn, Item d_egg) {
+
+
+    int colorValue;
+    private Item randomEgg;
+    private final String eggType;
+
+    public AddEggModifier(LootItemCondition[] conditionsIn, String eggType) {
         super(conditionsIn);
-        this.d_egg = d_egg;
+        this.eggType = eggType;
     }
 
     @Override
@@ -43,8 +62,12 @@ for (LootItemCondition condition : this.conditions){
     }
 }
 
+        if (eggType.equalsIgnoreCase("fire")){
+            colorValue = context.getRandom().nextInt(fireEggVariants.length);
+            randomEgg = fireEggVariants[colorValue].get();
+            generatedLoot.add(new ItemStack(randomEgg));
+        }
 
-        generatedLoot.add(new ItemStack(this.d_egg));
 
         return generatedLoot;
     }

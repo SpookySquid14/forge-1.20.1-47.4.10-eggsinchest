@@ -154,6 +154,9 @@ dependencies {
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
     implementation fg.deobf("curse.maven:citadel-331936:6702068")
     implementation fg.deobf('curse.maven:iceandfire-264231:5633453')
+
+    // Eyes of Ice and Fire for testing purposes DELETE WHEN DONE
+    implementation fg.deobf("curse.maven:eyesoficeandfire-1022143:5390953")
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html

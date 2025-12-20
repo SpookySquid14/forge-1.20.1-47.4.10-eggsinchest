@@ -6,5 +6,5 @@
       "loot_table_id": "minecraft:chests/spawn_bonus_chest"
     }
   ],
-  "d_egg": "iceandfire:dragonegg_electric"
+  "eggType": "fire"
 }

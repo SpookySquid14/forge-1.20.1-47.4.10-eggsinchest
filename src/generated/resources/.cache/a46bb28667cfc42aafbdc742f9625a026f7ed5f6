@@ -1,3 +1,3 @@
-// 1.20.1	2025-12-17T18:08:31.0327006	Global Loot Modifiers : iceandfireeggsinchests
+// 1.20.1	2025-12-19T21:31:31.211503	Global Loot Modifiers : iceandfireeggsinchests
 c93cfae4c2d24f2de5b6fb07030409aaf3ee11bb data/forge/loot_modifiers/global_loot_modifiers.json
-31fd62605e35f5c1cd4b533a9032c5f1d64a1e8a data/iceandfireeggsinchests/loot_modifiers/stater_chest_testing.json
+b0f391e2d9f4172920a30358a27e1ee6dda61f52 data/iceandfireeggsinchests/loot_modifiers/stater_chest_testing.json

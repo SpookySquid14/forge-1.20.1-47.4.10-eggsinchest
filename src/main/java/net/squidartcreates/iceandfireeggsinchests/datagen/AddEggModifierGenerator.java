@@ -1,5 +1,6 @@
 package net.squidartcreates.iceandfireeggsinchests.datagen;
 
+import com.github.alexthe666.iceandfire.IceAndFire;
 import com.github.alexthe666.iceandfire.item.IafItemRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -17,21 +18,9 @@ public class AddEggModifierGenerator extends GlobalLootModifierProvider {
     @Override
     protected void start() {
 
-        //Adds Lightning Dragon Egg to the Bonus chest at the start of world generation.
+        //Adds Fire Dragon Egg to the Bonus chest at the start of world generation.
         add("stater_chest_testing", new AddEggModifier(new LootItemCondition[]{
                 new LootTableIdCondition.Builder(new ResourceLocation("chests/spawn_bonus_chest")).build()},
-                IafItemRegistry.DRAGONEGG_ELECTRIC.get()));
-
-//        Adds Fire Dragon Eggs to chests in female fire dragon caves
-        add("dragon_egg_fire", new AddEggModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(new ResourceLocation("iceandfire:chest/fire_dragon_female_cave")).build()},
-                IafItemRegistry.DRAGONEGG_RED.get()
-                //GetEggModifier
-
-                //AddEggModifier Condition[
-                //random chance
-                //if it passes, roll a random number on the list of egg colors
-        ));
-
+                "fire"));
     }
 }
