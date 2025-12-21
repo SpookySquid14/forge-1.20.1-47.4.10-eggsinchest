@@ -4,7 +4,11 @@
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "iceandfire:chest/fire_dragon_female_cave"
+    },
+    {
+      "chance": 0.4472136,
+      "condition": "minecraft:random_chance"
     }
   ],
-  "d_egg": "iceandfire:dragonegg_red"
+  "eggType": "fire"
 }
