@@ -1,5 +1,10 @@
 {
   "entries": [
+    "iceandfireeggsinchests:female_ice_dragon_cave_eggs",
+    "iceandfireeggsinchests:female_lightning_dragon_cave_eggs",
+    "iceandfireeggsinchests:male_lightning_dragon_cave_eggs",
+    "iceandfireeggsinchests:male_fire_dragon_cave_eggs",
+    "iceandfireeggsinchests:male_ice_dragon_cave_eggs",
     "iceandfireeggsinchests:female_fire_dragon_cave_eggs"
   ],
   "replace": false

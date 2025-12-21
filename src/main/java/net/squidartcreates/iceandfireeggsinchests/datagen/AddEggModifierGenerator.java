@@ -29,7 +29,32 @@ public class AddEggModifierGenerator extends GlobalLootModifierProvider {
         //Adds Fire Dragon Eggs to the chests found in female fire dragon caves
         add("female_fire_dragon_cave_eggs", new AddEggModifier(new LootItemCondition[]{
                 new LootTableIdCondition.Builder(new ResourceLocation("iceandfire:chest/fire_dragon_female_cave")).build(),
-                LootItemRandomChanceCondition.randomChance((float) sqrt(0.25f)).build()},
+                LootItemRandomChanceCondition.randomChance((float) sqrt(0.2f)).build()},
                 "fire"));
+        //Adds Eggs to Male dragon chests
+        add("male_fire_dragon_cave_eggs", new AddEggModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation("iceandfire:chest/fire_dragon_male_cave")).build(),
+                LootItemRandomChanceCondition.randomChance((float) sqrt(0.16f)).build()},
+                "fire"));
+        //Ditto for ice
+        add("female_ice_dragon_cave_eggs", new AddEggModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation("iceandfire:chest/ice_dragon_female_cave")).build(),
+                LootItemRandomChanceCondition.randomChance((float) sqrt(0.2f)).build()},
+                "ice"));
+        //Adds Eggs to Male dragon chests
+        add("male_ice_dragon_cave_eggs", new AddEggModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation("iceandfire:chest/ice_dragon_male_cave")).build(),
+                LootItemRandomChanceCondition.randomChance((float) sqrt(0.16f)).build()},
+                "ice"));
+        //Ditto for lightning
+        add("female_lightning_dragon_cave_eggs", new AddEggModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation("iceandfire:chest/lightning_dragon_female_cave")).build(),
+                LootItemRandomChanceCondition.randomChance((float) sqrt(0.2f)).build()},
+                "lightning"));
+        //Adds Eggs to Male dragon chests
+        add("male_lightning_dragon_cave_eggs", new AddEggModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation("iceandfire:chest/lightning_dragon_male_cave")).build(),
+                LootItemRandomChanceCondition.randomChance((float) sqrt(0.16f)).build()},
+                "lightning"));
     }
 }

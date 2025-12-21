@@ -1,0 +1,14 @@
+{
+  "type": "iceandfireeggsinchests:add_egg",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "iceandfire:chest/ice_dragon_female_cave"
+    },
+    {
+      "chance": 0.4472136,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "eggType": "ice"
+}

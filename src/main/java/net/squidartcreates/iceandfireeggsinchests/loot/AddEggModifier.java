@@ -24,6 +24,7 @@ import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.apache.commons.lang3.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class AddEggModifier  extends LootModifier {
@@ -37,12 +38,25 @@ public class AddEggModifier  extends LootModifier {
             IafItemRegistry.DRAGONEGG_GRAY,
             IafItemRegistry.DRAGONEGG_BRONZE
     };
+    public RegistryObject<Item>[] iceEggVariants = new RegistryObject[]{
+            IafItemRegistry.DRAGONEGG_BLUE,
+            IafItemRegistry.DRAGONEGG_SAPPHIRE,
+            IafItemRegistry.DRAGONEGG_WHITE,
+            IafItemRegistry.DRAGONEGG_SILVER
+    };
+    public RegistryObject<Item>[] lightningEggVariants = new RegistryObject[]{
+            IafItemRegistry.DRAGONEGG_COPPER,
+            IafItemRegistry.DRAGONEGG_ELECTRIC,
+            IafItemRegistry.DRAGONEGG_AMYTHEST,
+            IafItemRegistry.DRAGONEGG_BLACK,
+    };
 
 
 
     int colorValue;
     private Item randomEgg;
     private final String eggType;
+    private RegistryObject<Item>[] eggVariantList;
 
     public AddEggModifier(LootItemCondition[] conditionsIn, String eggType) {
         super(conditionsIn);
@@ -52,25 +66,36 @@ public class AddEggModifier  extends LootModifier {
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 
-
-for (LootItemCondition condition : this.conditions){
-    if(!condition.test(context)){
-        return generatedLoot;
-    }
-}
-
-        int numberOfEggs = context.getRandom().nextInt(3) + 1;
-System.out.println(numberOfEggs);
-        if (eggType.equalsIgnoreCase("fire")){
-            for (int i = 0; i < numberOfEggs; i++){
-                colorValue = context.getRandom().nextInt(fireEggVariants.length);
-                randomEgg = fireEggVariants[colorValue].get();
-                generatedLoot.add(new ItemStack(randomEgg));
-                System.out.println(i);
+        for (LootItemCondition condition : this.conditions) {
+            if (!condition.test(context)) {
+                return generatedLoot;
             }
         }
 
+        int numberOfEggs = context.getRandom().nextInt(3) + 1;
+        System.out.println(numberOfEggs + " eggs generating");
 
+        switch (eggType.toLowerCase()) {
+            case "fire":
+                eggVariantList = fireEggVariants;
+                break;
+            case "ice":
+                eggVariantList = iceEggVariants;
+                break;
+            case "lightning":
+                eggVariantList = lightningEggVariants;
+                break;
+            default:
+                eggVariantList = null;
+        }
+        if (eggVariantList != null) {
+            for (int i = 0; i < numberOfEggs; i++) {
+                colorValue = context.getRandom().nextInt(eggVariantList.length);
+                randomEgg = eggVariantList[colorValue].get();
+                generatedLoot.add(new ItemStack(randomEgg));
+                System.out.println("egg " + i);
+            }
+        }
         return generatedLoot;
     }
 
