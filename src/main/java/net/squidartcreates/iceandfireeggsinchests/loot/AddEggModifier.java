@@ -37,10 +37,6 @@ public class AddEggModifier  extends LootModifier {
             IafItemRegistry.DRAGONEGG_GRAY,
             IafItemRegistry.DRAGONEGG_BRONZE
     };
-//            IafItemRegistry.DRAGONEGG_RED(),
-//            IafItemRegistry.DRAGONEGG_GREEN(),
-//            IafItemRegistry.DRAGONEGG_BRONZE(),
-//            IafItemRegistry.DRAGONEGG_GRAY()];
 
 
 
@@ -56,16 +52,22 @@ public class AddEggModifier  extends LootModifier {
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 
+
 for (LootItemCondition condition : this.conditions){
     if(!condition.test(context)){
         return generatedLoot;
     }
 }
 
+        int numberOfEggs = context.getRandom().nextInt(3) + 1;
+System.out.println(numberOfEggs);
         if (eggType.equalsIgnoreCase("fire")){
-            colorValue = context.getRandom().nextInt(fireEggVariants.length);
-            randomEgg = fireEggVariants[colorValue].get();
-            generatedLoot.add(new ItemStack(randomEgg));
+            for (int i = 0; i < numberOfEggs; i++){
+                colorValue = context.getRandom().nextInt(fireEggVariants.length);
+                randomEgg = fireEggVariants[colorValue].get();
+                generatedLoot.add(new ItemStack(randomEgg));
+                System.out.println(i);
+            }
         }
 
 
